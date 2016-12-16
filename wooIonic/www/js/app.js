@@ -47,6 +47,7 @@ angular.module('starter', ['ionic','starter.services'])
   var Woocommerce = WC.WC();
   Woocommerce.get('products/categories',function(err,data,res){
     console.log(res);
+    $scope.categories = (JSON.parse(res)).product_categories;
   })
 })
 

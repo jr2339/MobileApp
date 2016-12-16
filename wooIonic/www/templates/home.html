@@ -14,10 +14,10 @@
           <button class="button button-small button-clear button-assertive">View All</button>
       </ion-item>
 
-      <ion-item class="item-avater-left" ng-repeat="cat in categories">
+      <ion-item class="item-avater-left" ng-repeat="cat in mainCategories">
         <!-- we need add picture to our Woocommerce to show our categories-->
         <!--http://loremflicker.com/64/64/clothing just random give us an image-->
-        <!--<img src="{{cat.image}}"/>-->
+        <!--<img ng-src="{{cat.image}}"/>-->
         <h2>{{cat.name}}</h2>
         <p>{{cat.description}}</p>
       </ion-item>

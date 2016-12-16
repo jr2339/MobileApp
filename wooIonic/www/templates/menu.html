@@ -18,12 +18,14 @@
     </ion-side-menu-content>
 
     <ion-side-menu>
+        <!-- Code at here design our image width at height, we need to fix our image at here  -->
+        <img src="img/menu_banner.png" style="width: auto; height:20%"/>
         <ion-list>
             <ion-item>Login</ion-item>
             <ion-item>Home</ion-item>
             <ion-item>Browse</ion-item>
             <ion-item class="item-divider">Categories</ion-item>
-            <ion-item ng-repeat="cat in categories"></ion-item>
+            <ion-item ng-repeat="cat in mainCategories">{{cat.name}}</ion-item>
         </ion-list>
     </ion-side-menu>
 </ion-side-menus>

@@ -1,1 +1,43 @@
-Home Page
+<ion-view>
+  <ion-nav-title>Welcome to Sebastien Grey </ion-nav-title>
+
+  <ion-content>
+    <ion-slide-box show-pager="true" does-continue="true" pager-click="true" auto-play="true" slide-interval="2000">
+      <ion-slide ng-repeat="count in [1,2,3,4]">
+        <img ng-src="img/home_slider/{{count}}.jpg" class="full-image"/>
+      </ion-slide>
+    </ion-slide-box>
+
+    <ion-list class="list-card">
+      <ion-item class="item-divider item-button-right">
+        Shop By Category
+          <button class="button button-small button-clear button-assertive">View All</button>
+      </ion-item>
+
+      <ion-item class="item-avater-left" ng-repeat="cat in mainCategories">
+        <!-- we need add picture to our Woocommerce to show our categories-->
+        <!--http://loremflicker.com/64/64/clothing just random give us an image-->
+        <!--<img src="{{cat.image}}"/>-->
+        <h2>{{cat.name}}</h2>
+        <p>{{cat.description}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="item-body">
+      <ion-item class="item-image padding">
+        <img src="img/foot_banner.png"/>
+      </ion-item>
+      <ion-item>
+        <div style="font-size:10px";><center>Developed by Sebastien Grey Co.</center></div>
+      </ion-item>
+    </ion-list>
+
+
+
+
+  </ion-content>
+
+
+
+
+</ion-view>

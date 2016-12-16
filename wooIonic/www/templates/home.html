@@ -10,14 +10,14 @@
 
     <ion-list class="list-card">
       <ion-item class="item-divider item-button-right">
-        Shop By All Items
+        Shop By Categories
           <button class="button button-small button-clear button-assertive">View All</button>
       </ion-item>
 
-      <ion-item class="item-avater-left" ng-repeat="cat in mainCategories">
+      <ion-item class="item-avater-left" ng-repeat="cat in categories">
         <!-- we need add picture to our Woocommerce to show our categories-->
         <!--http://loremflicker.com/64/64/clothing just random give us an image-->
-        <!--<img ng-src="{{cat.image}}"/>-->
+        <img ng-src="{{cat.image}}" style="width: 40%; height:20%" />
         <h2>{{cat.name}}</h2>
         <p>{{cat.description}}</p>
       </ion-item>
@@ -31,13 +31,5 @@
         <div style="font-size:10px";><center>Developed by Sebastien Grey Co.</center></div>
       </ion-item>
     </ion-list>
-
-
-
-
   </ion-content>
-
-
-
-
 </ion-view>

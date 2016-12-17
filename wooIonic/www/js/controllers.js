@@ -1,6 +1,6 @@
 angular.module('starter.controllers',[])
 
-.controller('AppCtrl',function ($scope,WC,$localStorage,$rootScope) {
+.controller('AppCtrl',function ($scope,WC,$localStorage,$rootScope, $ionicModal) {
 
   $localStorage.cart =[];
 
@@ -22,8 +22,49 @@ angular.module('starter.controllers',[])
         $scope.mainCategories.push(element);
     })
   })
-})
 
+  $scope.showCartModal = function(){
+
+    $scope.cartItems = $localStorage.cart;
+
+    if(!$scope.cartItems || $scope.cartItems.length == 0){
+      console.log("no items in the cart!");
+      alert("No items!");
+      return;
+    }
+
+    $scope.costSum = 0;
+
+    $scope.cartItems.forEach(function(element, index){
+      $scope.costSum += Number(element.price);
+    });
+
+    $scope.costSum = $scope.costSum.toFixed(2);
+
+
+    $scope.modal = {};
+
+    $ionicModal.fromTemplateUrl('templates/cartModal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal){
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+
+
+  }
+
+  $scope.handleCheckout = function(){
+    console.log("Handle Checkout Called!");
+    $scope.modal.hide();
+    if($localStorage.userData)
+      $state.go("app.checkout")
+    else
+      $state.go("app.login")
+  }
+
+})
 .controller('HomeCtrl',function () {
 
 })

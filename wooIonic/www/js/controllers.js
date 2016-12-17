@@ -1,10 +1,12 @@
 angular.module('starter.controllers',[])
-  
+
 .controller('AppCtrl',function ($scope,WC) {
   var Woocommerce = WC.WC();
   Woocommerce.get('products/categories',function(err,data,res){
-    console.log(res);
+    //console.log(res);
+
     $scope.categories = (JSON.parse(res)).product_categories;
+
     $scope.mainCategories =[]; // these categories doesn't have any parents
     $scope.categories.forEach(function (element,index) {
       if(element.parent == 0)
@@ -13,6 +15,23 @@ angular.module('starter.controllers',[])
   })
 })
 
-  .controller('HomeCtrl',function () {
+.controller('HomeCtrl',function () {
 
-  })
+})
+
+.controller('BrowserCtrl',function ($scope,WC) {
+    $scope.getProducts = function () {
+        var Woocommerce = WC.WC();
+
+        Woocommerce.get('products',function (err,data,res) {
+            if(err)
+              console.log(err);
+
+            console.log(JSON.parse(res));
+
+            $scope.products = JSON.parse(res).products;
+        })
+    }
+
+    $scope.getProducts();
+})

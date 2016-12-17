@@ -146,3 +146,58 @@ angular.module('starter.controllers',[])
   }
 
 })
+
+  .controller('CategoriesCtrl', function($scope, WC){
+
+    var Woocommerce = WC.WC();
+
+    Woocommerce.get('products/categories', function(err, data, res){
+      if(err){
+        console.log(err);
+      }
+
+      $scope.categories = (JSON.parse(res)).product_categories;
+    })
+
+  })
+
+
+  .controller('CategoryCtrl', function(WC, $scope, $stateParams, $localStorage, $rootScope){
+
+    console.log($stateParams.categoryID);
+
+    var Woocommerce = WC.WC();
+
+    Woocommerce.get('products?filter[category]='+$stateParams.categoryID, function(err, data, res){
+
+      $scope.products =JSON.parse(res).products;
+      $scope.$apply();
+      $scope.products.forEach(function(element, index){
+        element.count = 0;
+      });
+
+      $scope.addToCart = function(product){
+
+        var countIncreased = false;
+        $localStorage.cart.forEach(function(item, index){
+          if(item.id == product.id && countIncreased){
+            console.log(item.id + "==" + product.id);
+            item.count += 1;
+            console.log("count increased by 1 for " + item.title);
+            countIncreased = true;
+          }
+        });
+
+        if(!countIncreased){
+          product.count = 1;
+          $localStorage.cart.push(product);
+        }
+
+        $rootScope.cartCount = $localStorage.cart.length;
+
+      }
+
+
+    })
+
+  })

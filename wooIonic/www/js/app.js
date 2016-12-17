@@ -84,16 +84,26 @@ angular.module('starter', ['ionic','starter.services','starter.controllers','ngS
           controller: 'SignUpCtrl'
         }
       }
-    });
-
-
-
-
-
-
-
-
-
+    })
+    .state('app.login', {
+      url : '/login/',
+      views : {
+        'menuContent' : {
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+    /*
+    .state('app.checkout', {
+      url : '/checkout/',
+      views : {
+        'menuContent' : {
+          templateUrl: 'templates/checkout.html',
+          controller: 'CheckoutCtrl'
+        }
+      }
+    })*/;
   $urlRouterProvider.otherwise('/app/home');
 })
 

@@ -378,9 +378,49 @@ angular.module('starter.controllers',[])
           })
         }
       });
-
     }
 
-
   })
+
+  .controller('LoginCtrl', function($scope, $http, $localStorage, $ionicPopup, $state, WC, $ionicHistory){
+
+    $scope.login = function(userData){
+
+      $http.get('http://sebastiengrey.com//api/auth/generate_auth_cookie/?insecure=cool&username='+userData.username+'&password='+userData.password)
+        .then(function(response){
+          console.log(response);
+
+          if(response.data.user){
+            $localStorage.userData = response;
+            $ionicPopup.show({
+              title: 'Welcome ' + response.data.user.displayname,
+              template: '<center>You have logged in successfully.</center>',
+              buttons: [{
+                text: 'OK',
+                onTap: function(e){
+                  $ionicHistory.nextViewOptions({
+                    disableAnimate: true,
+                    disableBack: true
+                  });
+                  $ionicHistory.clearHistory();
+                  $ionicHistory.clearCache();
+                  $state.go('app.home');
+                }
+              }]
+            })
+          }
+          else{
+            $ionicPopup.show({
+              title: 'Something is wrong. Please Check.',
+              template: '<center>Please check your username and password.</center>',
+              buttons: [{
+                text: 'Retry'
+              }]
+            })
+          }
+        });
+
+    }
+  })
+
 

@@ -286,7 +286,7 @@ angular.module('starter.controllers',[])
           $scope.newUser.isValid = false;
 
           $ionicPopup.show({
-            template: "<center>EMail is already registered. Please login or use another email address.</center>",
+            template: "<center>E-mail is already registered. Please login or use another email address.</center>",
             buttons: [{
               text: "Login",
               onTap: function(e){

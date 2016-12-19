@@ -94,7 +94,7 @@ angular.module('starter', ['ionic','starter.services','starter.controllers','ngS
         }
       }
     })
-    /*
+
     .state('app.checkout', {
       url : '/checkout/',
       views : {
@@ -103,7 +103,8 @@ angular.module('starter', ['ionic','starter.services','starter.controllers','ngS
           controller: 'CheckoutCtrl'
         }
       }
-    })*/;
+    });
+
   $urlRouterProvider.otherwise('/app/home');
 })
 

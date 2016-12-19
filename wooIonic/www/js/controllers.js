@@ -2,6 +2,18 @@ angular.module('starter.controllers',[])
 
 .controller('AppCtrl',function ($scope,WC,$localStorage,$rootScope, $ionicModal) {
 
+  $scope.$on('$ionicView.enter', function(e) {
+    console.log("userData", $localStorage.userData);
+    if($localStorage.userData){
+      $rootScope.userData = $localStorage.userData
+    }
+  });
+
+  $scope.logout = function(){
+    $localStorage.userData = undefined;
+    $rootScope.userData = undefined;
+  }
+
   $localStorage.cart =[];
 
   if($localStorage.cart)

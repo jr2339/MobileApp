@@ -21,12 +21,16 @@
         <!-- Code at here design our image width at height, we need to fix our image at here  -->
         <img src="img/menu_banner.png" style="width: auto; height:20%"/>
         <ion-list>
-            <ion-item menu-close ui-sref="app.login">Login</ion-item>
-            <ion-item menu-close ui-sref="app.signup">Sign Up</ion-item>
+            <ion-item ng-if="!userData" menu-close ui-sref="app.login">Login</ion-item>
+            <ion-item ng-if="!userData" menu-close ui-sref="app.signup">Sign Up</ion-item>
             <ion-item menu-close ui-sref="app.home">Home</ion-item>
             <ion-item menu-close ui-sref="app.browse">Browse</ion-item>
+            <!---------------------I don't like this pattern at here -----------------------
             <ion-item class="item-divider">Categories</ion-item>
-            <ion-item ng-repeat="cat in mainCategories">{{cat.name}}</ion-item>
+            <ion-item ng-repeat="cat in mainCategories" menu-close ui-sref="app.category({categoryID: cat.slug})">{{cat.name}}</ion-item>
+            ---------------------------------------------------------------------------------->
+            <ion-item ng-if="userData" class="item-divider">Account</ion-item>
+            <ion-item menu-close ui-sref="app.home" ng-click="logout()" ng-if="userData">Logout</ion-item>
         </ion-list>
     </ion-side-menu>
 </ion-side-menus>

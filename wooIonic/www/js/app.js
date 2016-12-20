@@ -22,21 +22,25 @@ angular.module('starter', ['ionic','starter.services','starter.controllers','ngS
     }
   });
 })
+/*
+.config() method executed everytime the angular module is loaded
+we load basic application configuaration in this method
+*/
 
 .config(function ($stateProvider,$urlRouterProvider) {
   $stateProvider
-      .state('app',{
-        url:'/app',
-        templateUrl:'templates/menu.html',
-        controller:'AppCtrl',
-        abstract:true
+    .state('app',{
+      url:'/app',
+      templateUrl:'templates/menu.html',
+      controller:'AppCtrl',
+      abstract:true
       })
-      .state('app.home', {
-        url: '/home',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/home.html',
-            controller: 'HomeCtrl'
+    .state('app.home', {
+      url: '/home',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/home.html',
+          controller: 'HomeCtrl'
           }
         }
       })
@@ -106,6 +110,11 @@ angular.module('starter', ['ionic','starter.services','starter.controllers','ngS
     });
 
   $urlRouterProvider.otherwise('/app/home');
+  /*
+  Navigating to /app/home means that both the "app" and "home" states will be
+  loaded together where the 'home' state will be loaded in the template of the
+  "app" state
+   */
 })
 
 

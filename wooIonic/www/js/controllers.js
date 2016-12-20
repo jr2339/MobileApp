@@ -339,7 +339,7 @@ angular.module('starter.controllers',[])
           "last_name": newUser.last_name,
           "company": "",
           "address_1": newUser.billing_address.address_1,
-          "address_2": newUser.billing_address.address_2,
+          //"address_2": newUser.billing_address.address_2,
           "city": newUser.billing_address.city,
           "state": newUser.billing_address.state,
           "postcode": newUser.billing_address.postcode,
